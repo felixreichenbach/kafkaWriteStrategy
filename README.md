@@ -68,10 +68,13 @@ You have to provide a properly formatted JSON string or it will crash! -> Defini
 
 
 Other useful kafka cli commands:
+
 List topics:
+
 ```kafka-topics --list --bootstrap-server localhost:9092```
 
 Delete topic:
+
 ```kafka-topics --delete --bootstrap-server localhost:9092 --topic test```
 
 
