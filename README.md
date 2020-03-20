@@ -54,10 +54,6 @@ SSH into the broker:
 
 ```docker exec -it broker /bin/bash```
 
-Create a topic:
-
-```kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test```
-
 Start the command line producer:
 
 ```kafka-console-producer --broker-list localhost:9092 --topic test --property value.serializer=custom.class.serialization.JsonSerializer```
@@ -73,6 +69,10 @@ You have to provide a properly formatted JSON string or it will crash! -> Defini
 List topics:
 
 ```kafka-topics --list --bootstrap-server localhost:9092```
+
+Create a topic:
+
+```kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test```
 
 Delete topic:
 
