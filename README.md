@@ -95,7 +95,7 @@ You can now easily change the java code, rebuild it, copy it to the "connect" co
 ```
 mvn clean install
 
-docker cp ./target/kafka-write-strategy-1.0-SNAPSHOT.jar connect:/usr/share/confluent-hub-components/kafka-connect-mongodb/lib/kafka-write-strategy-1.0-SNAPSHOT.jar```
+docker cp ./target/kafka-write-strategy-1.0-SNAPSHOT.jar connect:/usr/share/confluent-hub-components/kafka-connect-mongodb/lib/kafka-write-strategy-1.0-SNAPSHOT.jar
 
 docker restart connect
 ```
