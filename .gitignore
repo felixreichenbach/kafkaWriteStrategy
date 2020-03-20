@@ -21,3 +21,4 @@
 
 # Ignore targer folder
 target/
+.DS_Store
