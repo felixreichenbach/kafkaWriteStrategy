@@ -1,4 +1,4 @@
-# CustomkafkaWriteStrategy
+# Custom Kafka Write Strategy
 A simple MongoDB Kafka connector custom write strategy to get you started.
 
 
@@ -68,7 +68,8 @@ You have to run the command in the folder where you start the demo environment w
 
 ```docker-compose exec mongo1 /usr/bin/mongo```
 
-```use custom
+```
+use custom
 
 db.test.find()
 ```
