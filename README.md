@@ -46,7 +46,7 @@ curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json
      "writemodel.strategy": "de.demo.kafka.CustomWriteModelStrategy"
 }}'
 ```
-## Test Custom Write Strategy (WIP)
+## Test Custom Write Strategy
 We are going to use the command line producer to create messages.
 The “broker” container can be used to run Kafka cli commands.
 
@@ -88,6 +88,15 @@ Delete topic:
 
 ```kafka-topics --delete --bootstrap-server localhost:9092 --topic test```
 
+## Deploy Code Changes
 
+You can now easily change the java code, rebuild it, copy it to the "connect" container and restart it:
 
+```
+mvn clean install
+
+docker cp ./target/kafka-write-strategy-1.0-SNAPSHOT.jar connect:/usr/share/confluent-hub-components/kafka-connect-mongodb/lib/kafka-write-strategy-1.0-SNAPSHOT.jar```
+
+docker restart connect
+```
 
