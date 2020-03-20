@@ -63,8 +63,17 @@ You have to provide a properly formatted JSON string or it will crash! -> Defini
 
 ```{"hello":"world"}```
 
+Query MongoDB:
+You have to run the command in the folder where you start the demo environment with ./run.sh!
 
-**Other useful kafka cli commands:**
+```docker-compose exec mongo1 /usr/bin/mongo```
+
+```use custom
+
+db.test.find()
+```
+
+**Other useful Kafka cli commands:**
 
 List topics:
 
