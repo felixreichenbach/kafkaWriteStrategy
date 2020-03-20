@@ -22,6 +22,58 @@ Copy the jar file into the "connect" container:
 
 Restart the container “connect”:
 
-```docker restart connect
+```docker restart connect```
+
+## Configure the MongoDB-Kafka-Connector
+
+Create MongoDB Sink Connector (without custom write strategy!)
+Note: 
+I am using the “StringConverter” which means the message must contain a valid json structure!
+
+```
+curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json" --data '
+  {"name": "mongo-test-sink",
+   "config": {
+     "connector.class":"com.mongodb.kafka.connect.MongoSinkConnector",
+     "tasks.max":"1",
+     "topics":"test",
+     "connection.uri":"mongodb://mongo1:27017,mongo2:27017,mongo3:27017",
+     "database":"custom",
+     "collection":"test",
+     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+     "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+     "value.converter.schemas.enable": "false",
+     "writemodel.strategy": "de.claas.demo.kafka.CustomWriteModelStrategy"
+}}'
+```
+## Test Custom Write Strategy (WIP)
+We are going to use the command line producer to create messages.
+The “broker” container can be used to run Kafka cli commands.
+
+SSH into the broker:
+
+```docker exec -it broker /bin/bash```
+
+Create a topic:
+```kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test```
+
+Start the command line producer:
+
+```kafka-console-producer --broker-list localhost:9092 --topic test --property value.serializer=custom.class.serialization.JsonSerializer```
+
+Send a message to the topic:
+You have to provide a properly formatted JSON string or it will crash! -> Definitely something we can improve!
+
+```{"hello":"world"}```
+
+
+Other useful kafka cli commands:
+List topics:
+```kafka-topics --list --bootstrap-server localhost:9092```
+
+Delete topic:
+```kafka-topics --delete --bootstrap-server localhost:9092 --topic test```
+
+
 
 
