@@ -55,6 +55,7 @@ SSH into the broker:
 ```docker exec -it broker /bin/bash```
 
 Create a topic:
+
 ```kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test```
 
 Start the command line producer:
@@ -67,7 +68,7 @@ You have to provide a properly formatted JSON string or it will crash! -> Defini
 ```{"hello":"world"}```
 
 
-Other useful kafka cli commands:
+**Other useful kafka cli commands:**
 
 List topics:
 
