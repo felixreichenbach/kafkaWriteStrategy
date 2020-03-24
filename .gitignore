@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+.classpath
 
 # Log file
 *.log
@@ -22,3 +23,4 @@
 # Ignore targer folder
 target/
 .DS_Store
+.settings
