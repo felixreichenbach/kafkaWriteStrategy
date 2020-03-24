@@ -63,7 +63,7 @@ Start the command line producer:
 Send a message to the topic:
 You have to provide a properly formatted JSON string or it will crash! -> Definitely something we can improve!
 
-```{"hello":"world"}```
+```{"message":"hello world"}```
 
 Query MongoDB:
 You have to run the command in the folder where you start the demo environment with ./run.sh!
