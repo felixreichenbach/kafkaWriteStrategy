@@ -14,7 +14,6 @@ public class CustomWriteModelStrategy implements WriteModelStrategy {
 
     private static final UpdateOptions UPDATE_OPTIONS = new UpdateOptions().upsert(true);
 
-
     //incomming json should have one message key e.g. { "message": "Hello World"}
     @Override
     public WriteModel<BsonDocument> createWriteModel(SinkDocument document) {
@@ -22,10 +21,8 @@ public class CustomWriteModelStrategy implements WriteModelStrategy {
         // Retrieve the value part of the SinkDocument
         BsonDocument vd = document.getValueDoc().orElseThrow(
                 () -> new DataException("Error: cannot build the WriteModel since the value document was missing unexpectedly"));
-        
-        // Retrieve a specific the value of field "counter" and increment
 
-        //TODO: maybe push the whole vd into messages, so any message can be processed?
+        // extract message from incoming document
         BsonString message = new BsonString("");
         if (vd.containsKey("message")) {
             message = vd.get("message").asString();
